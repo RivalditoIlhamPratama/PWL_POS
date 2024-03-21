@@ -19,9 +19,11 @@ class UserController extends Controller
             'password' => Hash::make('12345')
          ];
 
-         UserModel::create($data); //tambahkan data ke table
+         //UserModel::create($data); //tambahkan data ke table
         
-        $user = UserModel::all();
+        $user = UserModel::findOr(1, ['username', 'nama'], function (){
+            abort(404);
+        });
         return view('user', ['data' => $user]);
     }
 }
