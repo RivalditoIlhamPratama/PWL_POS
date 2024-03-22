@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -11,25 +12,22 @@ class UserController extends Controller
 {
     public function index()
     {
-         //tambahkan data user dengan Eloquent Model
-         $data = [
-            'level_id' => 2,
-            'username' => 'manager_tiga',
-            'nama' => 'Manager 3',
-            'password' => Hash::make('12345')
-         ];
-
-         //UserModel::create($data); //tambahkan data ke table
         
-        $user = UserModel::firstOrNew(
-            [
-                'username' => 'manager33',
-                'nama' => 'Manager Tiga Tiga',
+        $user = UserModel::create([
+                'username' => 'manager50',
+                'nama' => 'Manager50',
                 'password' => Hash::make('12345'),
-                'level_id' => 2
-            ],
-        );
+                'level_id' => 2,
+        ]);
+
+        $user->username = 'manager51';
         $user->save();
-        return view('user', ['data' => $user]);
+
+        $user->wasChanged();
+        $user->wasChanged('username');
+        $user->wasChanged(['username', 'level_id']);
+        $user->wasChanged('nama');
+        $user->wasChanged(['nama', 'username']);
+        dd($user->wasChanged(['nama', 'username']));
     }
 }
