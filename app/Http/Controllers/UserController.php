@@ -13,7 +13,8 @@ class UserController extends Controller
     public function index()
     
     {
-        $user = UserModel::all();
+        //$user = UserModel::all();
+        $user = UserModel::with('level')->get();
         return view('user', ['data' => $user]);
     }
 
@@ -39,7 +40,7 @@ class UserController extends Controller
         } 
         public function tambah_simpan(Request $request)
         {
-            UserModel::created([
+            UserModel::create([
                 'username' => $request->username,
                 'nama' => $request->nama,
                 'password' => Hash::make('$request->password'),
