@@ -311,6 +311,11 @@ return [
             'text' => 'search',
         ],
         [
+            'text' => '  Manage kategori',
+            'url' => '/kategori', // 
+            'icon' => 'fas fa-cogs', // Ganti ikon sesuai kebutuhan
+        ],
+        [
             'text' => 'blog',
             'url' => 'admin/blog',
             'can' => 'manage-blog',
