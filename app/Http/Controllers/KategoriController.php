@@ -27,6 +27,9 @@ class KategoriController extends Controller
         ]);
         return redirect('/kategori');
     }
+    public function edit(){
+        return view('kategori.edit');
+    }
 }
 /* $data = [
             'kategori_kode' => 'SNK',

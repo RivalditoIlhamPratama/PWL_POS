@@ -26,6 +26,12 @@ Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 Route::get('/kategori/create', [KategoriController::class, 'create']);
 Route::post('/kategori/create', [KategoriController::class, 'create']);
 Route::post('/kategori', [KategoriController::class, 'store']);
+Route::post('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+Route::post('/kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+Route::post('/kategori/delete', [KategoriController::class, 'index'])->name('kategori.delete');
+
+
+
 
 
 
