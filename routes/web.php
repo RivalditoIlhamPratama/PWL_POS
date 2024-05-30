@@ -3,6 +3,7 @@
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,25 @@ Route::post('/kategori/update/{id}', [KategoriController::class, 'update'])->nam
 Route::post('/kategori/delete', [KategoriController::class, 'index'])->name('kategori.delete');
 
 
+//Jobsheet 5 Tugas nomer 3
+Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit']);
+Route::put('/kategori/{id}/edit', [KategoriController::class, 'update']);
+Route::delete('/kategori/{id}/delete', [KategoriController::class,'delete']);
+
+//Jobsheet 7
+Route::get('/', [WelcomeController::class, 'index']);
+
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::post('/list', [UserController::class, 'list']);
+    Route::get('/create', [UserController::class, 'create']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/{id}', [UserController::class, 'show']);
+    Route::get('/{id}/edit', [UserController::class, 'edit']);
+    Route::put('/{id}', [UserController::class, 'update']);
+    Route::delete('/{id}', [UserController::class, 'destroy']);
+    
+});
 
 
 

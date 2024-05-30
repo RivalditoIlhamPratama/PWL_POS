@@ -14,6 +14,17 @@ class KategoriController extends Controller
 
         return $dataTable->render('kategori.index');
     }
+
+    //public function index(Request $request){
+        //$kategories = KategoriModel::all();
+        //if ($request->ajax()){
+            //return response()->json($kategories);
+        //}
+        //return view('kategori.index', compact('kategories'));
+
+        //DB::table('m_kategori')->where('kategori_kode', '$id')->delete();
+    //}
+
     public function create()
     {
         return view('kategori.create');
@@ -27,10 +38,13 @@ class KategoriController extends Controller
         ]);
         return redirect('/kategori');
     }
-    public function edit(){
-        return view('kategori.edit');
+    public function edit($id){
+        $kategori = KategoriModel::find($id);
+        return view('kategori.edit', ['data' =>$kategori]);
     }
 }
+
+
 /* $data = [
             'kategori_kode' => 'SNK',
             'kategori_nama' => 'snack/Makanan RIngan',
@@ -39,11 +53,11 @@ class KategoriController extends Controller
         DB::table('m_kategori')->insert($data);
         return 'Insert data baru berhasil'; */
 
-        //$row = DB::table('m_kategori')->where('kategori_kode','SNK')->update(['kategori_nama' => 'Camilan']);
-        //return 'Update data berhasil. Jumlah data yang diupdate: ' . $row.' baris';
+        /*$row = DB::table('m_kategori')->where('kategori_kode','SNK')->update(['kategori_nama' => 'Camilan']);
+        return 'Update data berhasil. Jumlah data yang diupdate: ' . $row.' baris';
 
-        //$row = DB::table('m_kategori')->where('kategori_kode', 'SNK')->delete();
-        //return 'Delete data berhasil. Jumlah data yang dihapus: ' . $row.' baris';
+        $row = DB::table('m_kategori')->where('kategori_kode', 'SNK')->delete();
+        return 'Delete data berhasil. Jumlah data yang dihapus: ' . $row.' baris';
 
-        //$data =  DB::table('m_kategori')->get();
-        //return view('kategori', ['data' => $data]);
+        $data =  DB::table('m_kategori')->get();
+        return view('kategori', ['data' => $data]);*/

@@ -27,6 +27,8 @@ return (new EloquentDataTable($query))
 /**
 * Get the query source of dataTable.
 */
+
+
 public function query(KategoriModel $model): QueryBuilder
 {
 return $model->newQuery();
