@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserModel extends Model
 {
+    public function getJWTIdentifier(){
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(){
+        return[];
+    }
+    
     use HasFactory;
 
     protected $table = 'm_user';
